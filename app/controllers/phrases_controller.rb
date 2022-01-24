@@ -4,10 +4,12 @@ class PhrasesController < ApplicationController
   # GET /phrases or /phrases.json
   def index
     @phrases = Phrase.all
+    #@phrases = Phrase.active.alphabetical.paginate(:page => params[:page]).per_page(10)
   end
 
   # GET /phrases/1 or /phrases/1.json
   def show
+    
   end
 
   # GET /phrases/new

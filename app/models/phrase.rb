@@ -6,6 +6,7 @@ class Phrase < ApplicationRecord
         #order('Random()').first
         #random().first
         #The more "rails" way to do it:
+        #puts self.active.to_a.sample
         self.active.to_a.sample
         #'active' scope called
         #'to_a' executes a query and returns an array of Phrase objects

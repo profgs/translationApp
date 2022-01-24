@@ -13,19 +13,17 @@
   </thead>
 
   <tbody>
-    <% @phrases.each do |phrase| %>
-      <tr>
-        <td><%= phrase.spanish %></td>
-        <td><%= phrase.translation %></td>
-        <td><%= phrase.active %></td>
-        <td><%= link_to 'Show', phrase %></td>
-        <td><%= link_to 'Edit', edit_phrase_path(phrase) %></td>
-        <td><%= link_to 'Destroy', phrase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <% for phrase in @phrases%>
+    <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td width="350"><%= link_to phrase.spanish, phrase_path(phrase) %></td>
+    <td width="350"><%= phrase.translation %></td>
+    <td width="90" align="center">
+    <%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_phrase_path(phrase))  %>&nbsp;<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), phrase_path(phrase), :confirm => 'Are you sure you wish to delete this information?', :method => :delete) %>
+  </td>
+  </tr>
+<% end %>
 </table>
+<p class="supertiny"></p>
+<!--%= will_paginate @phrases %-->
 
-<br>
-
-<%= link_to 'New Phrase', new_phrase_path %>
+<%= link_to 'Add a new spanish phrase', new_phrase_path %>

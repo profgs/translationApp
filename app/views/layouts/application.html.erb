@@ -10,6 +10,24 @@
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+	<body>
+	  <div id="wrap">
+	    <div id="header">
+
+		<%= link_to(image_tag('phrases-phrases-everywhere.jpeg', height: '200'), home_path) %>
+	    </div> <!-- end of header div -->
+	    <br />
+
+	    <div id="body">
+	      <% flash.each do |name, msg| %>
+	        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+	      <% end %>
+	      <%= yield %>
+	    
+	    </div> <!-- end of body div -->
+
+      <!-- add in a partial that will provide a footer -->
+	    <%= render :partial => "partials/footer" %>
+	  </div><!-- end of wrap div -->
+	</body>
 </html>
